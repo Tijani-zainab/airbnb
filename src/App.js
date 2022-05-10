@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './Components/Navbar/Navbar';
+import HeroLanding from './Components/HeroLanding/HeroLanding';
+import Cards from './Components/Cards/Cards';
+import dataBase from "./data";
+
 
 function App() {
+    const cardsData = dataBase.map(element => {
+      return <Cards {...element} key={element.id} />
+    })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <HeroLanding />
+      <div className='cards-list'>
+        {cardsData}
+      </div>
+
+
     </div>
   );
 }
 
 export default App;
+
+
+
+// key={element.id}
+// coverImg={element.coverImg} 
+// availableStatus={element.availableStatus} 
+// stats={element.stats} 
+// title={element.title} 
+// price={element.price}
